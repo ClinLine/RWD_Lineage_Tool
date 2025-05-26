@@ -16,7 +16,7 @@ The Real World Data Lineage Tool aims to vizualize the lineage of data from sour
 
 ## Parkinson Use Case
 Mappings based on a Parkinson Mock Protocol will be added to the Github RWE_Lineage_Tool space. This includes 
-  - The Mock Protocol
+  - The [Mock Protocol](https://github.com/ClinLine/RWD_Lineage_Tool/blob/main/Documentation/Parkinson_MockProtocol.docx)
   - Mapping from MIMIC FHIR formatted datasource to an OMOP-like structure and subsequently to SDTM submissable datasets which can be utilized in the visualisation tool
   - Define.xml like documentation for the mappings
 
