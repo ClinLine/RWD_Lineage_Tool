@@ -365,7 +365,102 @@
                 "instanceType": "Encounter"
               }
             ],
-            "population": null,
+            "population": {
+              "id": "StudyDesignPopulation_2",
+              "extensionAttributes": [],
+              "name": "POP2",
+              "label": "RWD Parkingson",
+              "description": "MIMIC Patients with Probable Parkinson's Disease",
+              "includesHealthySubjects": false,
+              "plannedEnrollmentNumberRange": null,
+              "plannedEnrollmentNumberQuantity": {
+                "id": "Quantity_8",
+                "extensionAttributes": [],
+                "value": 24,
+                "unit": null,
+                "instanceType": "Quantity"
+              },
+              "plannedCompletionNumberRange": null,
+              "plannedCompletionNumberQuantity": {
+                "id": "Quantity_7",
+                "extensionAttributes": [],
+                "value": 24,
+                "unit": null,
+                "instanceType": "Quantity"
+              },
+              "plannedSex": [
+                {
+                  "id": "Code_567",
+                  "extensionAttributes": [],
+                  "code": "C49636",
+                  "codeSystem": "http://www.cdisc.org",
+                  "codeSystemVersion": "2024-09-27",
+                  "decode": "Both",
+                  "instanceType": "Code"
+                }
+              ],
+              "criterionIds": [
+                "EligibilityCriterion_1",
+                "EligibilityCriterion_2",
+                "EligibilityCriterion_3",
+                "EligibilityCriterion_4",
+                "EligibilityCriterion_5",
+                "EligibilityCriterion_6",
+                "EligibilityCriterion_7",
+                "EligibilityCriterion_8"
+              ],
+              "plannedAge": {
+                "id": "Range_1",
+                "extensionAttributes": [],
+                "minValue": {
+                  "id": "Quantity_09a",
+                  "extensionAttributes": [],
+                  "value": 18,
+                  "unit": {
+                    "id": "AliasCode_222a",
+                    "extensionAttributes": [],
+                    "standardCode": {
+                      "id": "Code_566a",
+                      "extensionAttributes": [],
+                      "code": "C29848",
+                      "codeSystem": "http://www.cdisc.org",
+                      "codeSystemVersion": "2024-09-27",
+                      "decode": "Year",
+                      "instanceType": "Code"
+                    },
+                    "standardCodeAliases": [],
+                    "instanceType": "AliasCode"
+                  },
+                  "instanceType": "Quantity"
+                },
+                "maxValue": {
+                  "id": "Quantity_10b",
+                  "extensionAttributes": [],
+                  "value": 75,
+                  "unit": {
+                    "id": "AliasCode_222b",
+                    "extensionAttributes": [],
+                    "standardCode": {
+                      "id": "Code_566b",
+                      "extensionAttributes": [],
+                      "code": "C29848",
+                      "codeSystem": "http://www.cdisc.org",
+                      "codeSystemVersion": "2024-09-27",
+                      "decode": "Year",
+                      "instanceType": "Code"
+                    },
+                    "standardCodeAliases": [],
+                    "instanceType": "AliasCode"
+                  },
+                  "instanceType": "Quantity"
+                },
+                "isApproximate": false,
+                "instanceType": "Range"
+              },
+              "notes": [],
+              "instanceType": "StudyDesignPopulation",
+              "cohorts": []
+            },
             "eligibilityCriteria": [],
             "arms": [
               {
@@ -399,6 +494,38 @@
               }       ],
             "epochs": [],
             "studyCells": [],
+			"indications": [
+              {
+                "id": "Indication_1a",
+                "extensionAttributes": [],
+                "name": "IND1",
+                "label": "Parkinson's disease",
+                "description": "Parkinson's disease",
+                "codes": [
+                  {
+                    "id": "Code_552a",
+                    "extensionAttributes": [],
+                    "code": "G20",
+                    "codeSystem": "ICD-10-CM",
+                    "codeSystemVersion": "October 1, 2024",
+                    "decode": "Parkinson's disease",
+                    "instanceType": "Code"
+                  },
+                  {
+                    "id": "Code_553a",
+                    "extensionAttributes": [],
+                    "code": "49049000",
+                    "codeSystem": "SNOMED",
+                    "codeSystemVersion": "January 31, 2018",
+                    "decode": "Parkinson's disease",
+                    "instanceType": "Code"
+                  }
+                ],
+                "isRareDisease": false,
+                "notes": [],
+                "instanceType": "Indication"
+              }
+            ],
             "model": {
               "id": "Code_1132",
               "extensionAttributes": [],
@@ -1477,30 +1604,7 @@
                 "EligibilityCriterion_5",
                 "EligibilityCriterion_6",
                 "EligibilityCriterion_7",
-                "EligibilityCriterion_8",
-                "EligibilityCriterion_9",
-                "EligibilityCriterion_10",
-                "EligibilityCriterion_11",
-                "EligibilityCriterion_12",
-                "EligibilityCriterion_13",
-                "EligibilityCriterion_14",
-                "EligibilityCriterion_15",
-                "EligibilityCriterion_16",
-                "EligibilityCriterion_17",
-                "EligibilityCriterion_18",
-                "EligibilityCriterion_19",
-                "EligibilityCriterion_20",
-                "EligibilityCriterion_21",
-                "EligibilityCriterion_22",
-                "EligibilityCriterion_23",
-                "EligibilityCriterion_24",
-                "EligibilityCriterion_25",
-                "EligibilityCriterion_26",
-                "EligibilityCriterion_27",
-                "EligibilityCriterion_28",
-                "EligibilityCriterion_29",
-                "EligibilityCriterion_30",
-                "EligibilityCriterion_31"
+                "EligibilityCriterion_8"
               ],
               "plannedAge": {
                 "id": "Range_1",
@@ -3778,7 +3882,7 @@
             "name": "IN01",
             "label": null,
             "description": null,
-            "text": "<p>Males and postmenopausal females at least <usdm:tag name=\"min_age\"/> years of age.</p>",
+            "text": "<p>Male and female participants <usdm:tag name=\"min_age\"/> - <usdm:tag name=\"max_age\"/> years of age.</p>",
             "dictionaryId": "SyntaxTemplateDictionary_1",
             "notes": [],
             "instanceType": "EligibilityCriterionItem"
@@ -3789,7 +3893,7 @@
             "name": "IN02",
             "label": null,
             "description": null,
-            "text": "<p><usdm:tag name=\"StudyPopulation\"/> as defined by National Institute of Neurological and Communicative Disorders and Stroke (NINCDS) and the Alzheimer's Disease and Related Disorders Association (ADRDA) guidelines (Attachment LZZT.7).</p>",
+            "text": "<p>Diagnosed with early and/or moderate <usdm:tag name=\"StudyIndication\"/> at least 6 months before study participation.</p>",
             "dictionaryId": "SyntaxTemplateDictionary_1",
             "notes": [],
             "instanceType": "EligibilityCriterionItem"
@@ -3800,7 +3904,7 @@
             "name": "IN03",
             "label": null,
             "description": null,
-            "text": "<p><usdm:tag name=\"Activity1\"/> score of 10 to 23.</p>",
+            "text": "<p>Able to read, understand and to provide written consent.</p>",
             "dictionaryId": "SyntaxTemplateDictionary_2",
             "notes": [],
             "instanceType": "EligibilityCriterionItem"
@@ -3811,7 +3915,7 @@
             "name": "IN04",
             "label": null,
             "description": null,
-            "text": "<p><usdm:tag name=\"Activity2\"/>  score of ≤4 (Attachment LZZT.8).</p>",
+            "text": "<p>Female study participants should not be <usdm:tag name=\"Pregnant\"/> or plan to become pregnant during study participation and for 6 months after last investigational product administration.",
             "dictionaryId": "SyntaxTemplateDictionary_2",
             "notes": [],
             "instanceType": "EligibilityCriterionItem"
@@ -3822,7 +3926,7 @@
             "name": "IN05",
             "label": null,
             "description": null,
-            "text": "<p>CNS imaging (CT scan or MRI of brain) compatible with AD within past 1 year.</p>\n<p>The following findings are incompatible with AD:</p>\n<ol style=\"list-style-type: lower-alpha;\">\n  <li>\n    <p>Large vessel strokes</p>\n    <ol>\n      <li>\n        <p>Any definite area of encephalomalacia consistent with ischemic necrosis in any cerebral artery territory.</p>\n      </li>\n      <li>\n        <p>Large, confluent areas of encephalomalacia in parieto-occipital or frontal regions consistent with watershed\n          infarcts.</p>\n        <p>The above are exclusionary. Exceptions are made for small areas of cortical asymmetry which may represent a\n          small cortical stroke or a focal area of atrophy provided there is no abnormal signal intensity in the\n          immediately underlying parenchyma. Only one such questionable area allowed per scan, and size is restricted to\n          ≤1cm in frontal/parietal/temporal cortices and ≤2 cm in occipital cortex.</p>\n      </li>\n    </ol>\n  </li>\n  <li>\n    <p>Small vessel ischemia</p>\n    <ol>\n      <li>\n        <p>Lacunar infarct is defined as an area of abnormal intensity seen on CT scan or on both T1 and T2 weighted MRI\n          images in the basal ganglia, thalamus or deep white matter which is ≤1 cm in maximal diameter. A maximum of\n          one\n          lacune is allowed per scan.</p>\n      </li>\n      <li>\n        <p>Leukoariosis or leukoencephalopathy is regarded as an abnormality seen on T2 but not T1 weighted MRIs, or on\n          CT. This is accepted if mild or moderate in extent, meaning involvement of less than 25% of cortical white\n          matter.\n      </li>\n    </ol>\n  </li>\n  <li>\n    <p>Miscellaneous</p>\n    <ol>\n      <li>\n        <p>Benign small extra-axial tumors (ie, meningiomas) are accepted if they do not contact or indent the brain\n          parenchyma.</p>\n      </li>\n      <li>\n        <p>Small extra-axial arachnoid cysts are accepted if they do not indent or deform the brain parenchyma.</p>\n      </li>\n    </ol>\n  </li>\n</ol>",
+            "text": "<p>Male participants if their sexual partners can become pregnant should use a method of contraception during study participation and for 6 months after the last administration of the investigated product.",
             "dictionaryId": null,
             "notes": [],
             "instanceType": "EligibilityCriterionItem"
@@ -3833,7 +3937,7 @@
             "name": "IN06",
             "label": null,
             "description": null,
-            "text": "<p>Investigator has obtained informed consent signed by the patient (and/or legal representative) and by the caregiver.</p>",
+            "text": "<p>Study participant is able and willing to comply with the requirements of this clinical study.</p>",
             "dictionaryId": null,
             "notes": [],
             "instanceType": "EligibilityCriterionItem"
@@ -3844,7 +3948,7 @@
             "name": "IN07",
             "label": null,
             "description": null,
-            "text": "<p>Geographic proximity to investigator's site that allows adequate follow-up.</p>",
+            "text": "<p>Parkinson’s disease subjects deemed appropriate for treatment of motor symptoms with a <usdm:tag name=\"BC1_UDPRS\"/> Part III score ><usdm:tag name=\"BC1_MinValExcl\"/>.</p>",
             "dictionaryId": null,
             "notes": [],
             "instanceType": "EligibilityCriterionItem"
@@ -10377,177 +10481,6 @@
             "instanceType": "BiomedicalConcept"
           },
           {
-            "id": "BiomedicalConcept_8",
-            "extensionAttributes": [],
-            "name": "Albumin Presence in Urine",
-            "label": "Albumin Presence in Urine",
-            "synonyms": [
-              "Albumin",
-              "Albumin Measurement"
-            ],
-            "reference": "/mdr/specializations/sdtm/packages/2023-12-12/datasetspecializations/ALBURINPRES",
-            "properties": [
-              {
-                "id": "BiomedicalConceptProperty_51",
-                "extensionAttributes": [],
-                "name": "LBTESTCD",
-                "label": "LBTESTCD",
-                "isRequired": true,
-                "isEnabled": true,
-                "datatype": "",
-                "responseCodes": [],
-                "code": {
-                  "id": "AliasCode_72",
-                  "extensionAttributes": [],
-                  "standardCode": {
-                    "id": "Code_270",
-                    "extensionAttributes": [],
-                    "code": "C64431",
-                    "codeSystem": "http://www.cdisc.org",
-                    "codeSystemVersion": "2023-12-15",
-                    "decode": "ALB",
-                    "instanceType": "Code"
-                  },
-                  "standardCodeAliases": [],
-                  "instanceType": "AliasCode"
-                },
-                "notes": [],
-                "instanceType": "BiomedicalConceptProperty"
-              },
-              {
-                "id": "BiomedicalConceptProperty_52",
-                "extensionAttributes": [],
-                "name": "LBORRES",
-                "label": "LBORRES",
-                "isRequired": true,
-                "isEnabled": true,
-                "datatype": "text",
-                "responseCodes": [],
-                "code": {
-                  "id": "AliasCode_73",
-                  "extensionAttributes": [],
-                  "standardCode": {
-                    "id": "Code_271",
-                    "extensionAttributes": [],
-                    "code": "C36292",
-                    "codeSystem": "http://www.cdisc.org",
-                    "codeSystemVersion": "2023-12-15",
-                    "decode": "Laboratory Test Result",
-                    "instanceType": "Code"
-                  },
-                  "standardCodeAliases": [],
-                  "instanceType": "AliasCode"
-                },
-                "notes": [],
-                "instanceType": "BiomedicalConceptProperty"
-              },
-              {
-                "id": "BiomedicalConceptProperty_53",
-                "extensionAttributes": [],
-                "name": "LBSPEC",
-                "label": "LBSPEC",
-                "isRequired": true,
-                "isEnabled": true,
-                "datatype": "",
-                "responseCodes": [],
-                "code": {
-                  "id": "AliasCode_74",
-                  "extensionAttributes": [],
-                  "standardCode": {
-                    "id": "Code_272",
-                    "extensionAttributes": [],
-                    "code": "C70713",
-                    "codeSystem": "http://www.cdisc.org",
-                    "codeSystemVersion": "2023-12-15",
-                    "decode": "Biospecimen Type",
-                    "instanceType": "Code"
-                  },
-                  "standardCodeAliases": [],
-                  "instanceType": "AliasCode"
-                },
-                "notes": [],
-                "instanceType": "BiomedicalConceptProperty"
-              },
-              {
-                "id": "BiomedicalConceptProperty_54",
-                "extensionAttributes": [],
-                "name": "LBFAST",
-                "label": "LBFAST",
-                "isRequired": true,
-                "isEnabled": true,
-                "datatype": "",
-                "responseCodes": [
-                  {
-                    "id": "ResponseCode_63",
-                    "extensionAttributes": [],
-                    "isEnabled": true,
-                    "code": {
-                      "id": "Code_273",
-                      "extensionAttributes": [],
-                      "code": "C49487",
-                      "codeSystem": "http://www.cdisc.org",
-                      "codeSystemVersion": "2023-12-15",
-                      "decode": "No",
-                      "instanceType": "Code"
-                    },
-                    "instanceType": "ResponseCode",
-                    "name": "RC_C49487"
-                  },
-                  {
-                    "id": "ResponseCode_64",
-                    "extensionAttributes": [],
-                    "isEnabled": true,
-                    "code": {
-                      "id": "Code_274",
-                      "extensionAttributes": [],
-                      "code": "C49488",
-                      "codeSystem": "http://www.cdisc.org",
-                      "codeSystemVersion": "2023-12-15",
-                      "decode": "Yes",
-                      "instanceType": "Code"
-                    },
-                    "instanceType": "ResponseCode",
-                    "name": "RC_C49488"
-                  }
-                ],
-                "code": {
-                  "id": "AliasCode_75",
-                  "extensionAttributes": [],
-                  "standardCode": {
-                    "id": "Code_275",
-                    "extensionAttributes": [],
-                    "code": "C83309",
-                    "codeSystem": "http://www.cdisc.org",
-                    "codeSystemVersion": "2023-12-15",
-                    "decode": "Laboratory Test Fasting Status",
-                    "instanceType": "Code"
-                  },
-                  "standardCodeAliases": [],
-                  "instanceType": "AliasCode"
-                },
-                "notes": [],
-                "instanceType": "BiomedicalConceptProperty"
-              }
-            ],
-            "code": {
-              "id": "AliasCode_76",
-              "extensionAttributes": [],
-              "standardCode": {
-                "id": "Code_276",
-                "extensionAttributes": [],
-                "code": "C64431",
-                "codeSystem": "http://www.cdisc.org",
-                "codeSystemVersion": "2023-12-15",
-                "decode": "ALB",
-                "instanceType": "Code"
-              },
-              "standardCodeAliases": [],
-              "instanceType": "AliasCode"
-            },
-            "notes": [],
-            "instanceType": "BiomedicalConcept"
-          },
-          {
             "id": "BiomedicalConcept_9",
             "extensionAttributes": [],
             "name": "Alkaline Phosphatase Concentration in Serum/Plasma",
@@ -11045,261 +10978,56 @@
           {
             "id": "BiomedicalConcept_11",
             "extensionAttributes": [],
-            "name": "Creatinine Concentration in Urine",
-            "label": "Creatinine Concentration in Urine",
-            "synonyms": [
-              "Creatinine",
-              "Creatinine Measurement"
-            ],
-            "reference": "/mdr/specializations/sdtm/packages/2023-10-03/datasetspecializations/CREATURIN",
-            "properties": [
-              {
-                "id": "BiomedicalConceptProperty_65",
-                "extensionAttributes": [],
-                "name": "LBTESTCD",
-                "label": "LBTESTCD",
-                "isRequired": true,
-                "isEnabled": true,
-                "datatype": "",
-                "responseCodes": [],
-                "code": {
-                  "id": "AliasCode_89",
-                  "extensionAttributes": [],
-                  "standardCode": {
-                    "id": "Code_299",
-                    "extensionAttributes": [],
-                    "code": "C64547",
-                    "codeSystem": "http://www.cdisc.org",
-                    "codeSystemVersion": "2023-12-15",
-                    "decode": "CREAT",
-                    "instanceType": "Code"
-                  },
-                  "standardCodeAliases": [],
-                  "instanceType": "AliasCode"
-                },
-                "notes": [],
-                "instanceType": "BiomedicalConceptProperty"
-              },
-              {
-                "id": "BiomedicalConceptProperty_66",
-                "extensionAttributes": [],
-                "name": "LBORRES",
-                "label": "LBORRES",
-                "isRequired": true,
-                "isEnabled": true,
-                "datatype": "float",
-                "responseCodes": [],
-                "code": {
-                  "id": "AliasCode_90",
-                  "extensionAttributes": [],
-                  "standardCode": {
-                    "id": "Code_300",
-                    "extensionAttributes": [],
-                    "code": "C36292",
-                    "codeSystem": "http://www.cdisc.org",
-                    "codeSystemVersion": "2023-12-15",
-                    "decode": "Laboratory Test Result",
-                    "instanceType": "Code"
-                  },
-                  "standardCodeAliases": [],
-                  "instanceType": "AliasCode"
-                },
-                "notes": [],
-                "instanceType": "BiomedicalConceptProperty"
-              },
-              {
-                "id": "BiomedicalConceptProperty_67",
-                "extensionAttributes": [],
-                "name": "LBORRESU",
-                "label": "LBORRESU",
-                "isRequired": true,
-                "isEnabled": true,
-                "datatype": "",
-                "responseCodes": [
-                  {
-                    "id": "ResponseCode_75",
-                    "extensionAttributes": [],
-                    "isEnabled": true,
-                    "code": {
-                      "id": "Code_301",
-                      "extensionAttributes": [],
-                      "code": "C67015",
-                      "codeSystem": "http://www.cdisc.org",
-                      "codeSystemVersion": "2023-12-15",
-                      "decode": "Milligram per Deciliter",
-                      "instanceType": "Code"
-                    },
-                    "instanceType": "ResponseCode",
-                    "name": "RC_C67015"
-                  },
-                  {
-                    "id": "ResponseCode_76",
-                    "extensionAttributes": [],
-                    "isEnabled": true,
-                    "code": {
-                      "id": "Code_302",
-                      "extensionAttributes": [],
-                      "code": "C64572",
-                      "codeSystem": "http://www.cdisc.org",
-                      "codeSystemVersion": "2023-12-15",
-                      "decode": "Microgram per Milliliter",
-                      "instanceType": "Code"
-                    },
-                    "instanceType": "ResponseCode",
-                    "name": "RC_C64572"
-                  },
-                  {
-                    "id": "ResponseCode_77",
-                    "extensionAttributes": [],
-                    "isEnabled": true,
-                    "code": {
-                      "id": "Code_303",
-                      "extensionAttributes": [],
-                      "code": "C64387",
-                      "codeSystem": "http://www.cdisc.org",
-                      "codeSystemVersion": "2023-12-15",
-                      "decode": "Millimole per Liter",
-                      "instanceType": "Code"
-                    },
-                    "instanceType": "ResponseCode",
-                    "name": "RC_C64387"
-                  },
-                  {
-                    "id": "ResponseCode_78",
-                    "extensionAttributes": [],
-                    "isEnabled": true,
-                    "code": {
-                      "id": "Code_304",
-                      "extensionAttributes": [],
-                      "code": "C48508",
-                      "codeSystem": "http://www.cdisc.org",
-                      "codeSystemVersion": "2023-12-15",
-                      "decode": "Micromole per Liter",
-                      "instanceType": "Code"
-                    },
-                    "instanceType": "ResponseCode",
-                    "name": "RC_C48508"
-                  }
-                ],
-                "code": {
-                  "id": "AliasCode_91",
-                  "extensionAttributes": [],
-                  "standardCode": {
-                    "id": "Code_305",
-                    "extensionAttributes": [],
-                    "code": "C48207",
-                    "codeSystem": "http://www.cdisc.org",
-                    "codeSystemVersion": "2023-12-15",
-                    "decode": "Unit of Concentration",
-                    "instanceType": "Code"
-                  },
-                  "standardCodeAliases": [],
-                  "instanceType": "AliasCode"
-                },
-                "notes": [],
-                "instanceType": "BiomedicalConceptProperty"
-              },
-              {
-                "id": "BiomedicalConceptProperty_68",
-                "extensionAttributes": [],
-                "name": "LBSPEC",
-                "label": "LBSPEC",
-                "isRequired": true,
-                "isEnabled": true,
-                "datatype": "",
-                "responseCodes": [],
-                "code": {
-                  "id": "AliasCode_92",
-                  "extensionAttributes": [],
-                  "standardCode": {
-                    "id": "Code_306",
-                    "extensionAttributes": [],
-                    "code": "C70713",
-                    "codeSystem": "http://www.cdisc.org",
-                    "codeSystemVersion": "2023-12-15",
-                    "decode": "Biospecimen Type",
-                    "instanceType": "Code"
-                  },
-                  "standardCodeAliases": [],
-                  "instanceType": "AliasCode"
-                },
-                "notes": [],
-                "instanceType": "BiomedicalConceptProperty"
-              },
-              {
-                "id": "BiomedicalConceptProperty_69",
-                "extensionAttributes": [],
-                "name": "LBFAST",
-                "label": "LBFAST",
-                "isRequired": true,
-                "isEnabled": true,
-                "datatype": "",
-                "responseCodes": [
-                  {
-                    "id": "ResponseCode_79",
-                    "extensionAttributes": [],
-                    "isEnabled": true,
-                    "code": {
-                      "id": "Code_307",
-                      "extensionAttributes": [],
-                      "code": "C49487",
-                      "codeSystem": "http://www.cdisc.org",
-                      "codeSystemVersion": "2023-12-15",
-                      "decode": "No",
-                      "instanceType": "Code"
-                    },
-                    "instanceType": "ResponseCode",
-                    "name": "RC_C49487"
-                  },
-                  {
-                    "id": "ResponseCode_80",
-                    "extensionAttributes": [],
-                    "isEnabled": true,
-                    "code": {
-                      "id": "Code_308",
-                      "extensionAttributes": [],
-                      "code": "C49488",
-                      "codeSystem": "http://www.cdisc.org",
-                      "codeSystemVersion": "2023-12-15",
-                      "decode": "Yes",
-                      "instanceType": "Code"
-                    },
-                    "instanceType": "ResponseCode",
-                    "name": "RC_C49488"
-                  }
-                ],
-                "code": {
-                  "id": "AliasCode_93",
-                  "extensionAttributes": [],
-                  "standardCode": {
-                    "id": "Code_309",
-                    "extensionAttributes": [],
-                    "code": "C83309",
-                    "codeSystem": "http://www.cdisc.org",
-                    "codeSystemVersion": "2023-12-15",
-                    "decode": "Laboratory Test Fasting Status",
-                    "instanceType": "Code"
-                  },
-                  "standardCodeAliases": [],
-                  "instanceType": "AliasCode"
-                },
-                "notes": [],
-                "instanceType": "BiomedicalConceptProperty"
-              }
-            ],
+            "name": "MDS_UPDRS_III",
+            "label": "MDS-UPDRS Part III",
+            "synonyms": [],
+            "reference": "NA",
+            "properties": [],
             "code": {
               "id": "AliasCode_94",
               "extensionAttributes": [],
               "standardCode": {
                 "id": "Code_310",
                 "extensionAttributes": [],
-                "code": "C64547",
+                "code": "C100769",
                 "codeSystem": "http://www.cdisc.org",
                 "codeSystemVersion": "2023-12-15",
-                "decode": "CREAT",
+                "decode": "MDS-UPDRS",
                 "instanceType": "Code"
               },
-              "standardCodeAliases": [],
+              "standardCodeAliases": [{
+                "id": "Code_310b",
+                "extensionAttributes": [],
+                "code": "1099221000000108",
+                "codeSystem": "SNOMED",
+                "codeSystemVersion": "2024-08-01",
+                "decode": "Unified Parkinson's Disease Rating Scale total points",
+                "instanceType": "Code"
+              },{
+                "id": "Code_310c",
+                "extensionAttributes": [],
+                "code": "LP193311-0",
+                "codeSystem": "LOINC",
+                "codeSystemVersion": "2.78",
+                "decode": "Unified Parkinson's Disease Rating Scale (UPDRS) panel",
+                "instanceType": "Code"
+              },{
+                "id": "Code_310d",
+                "extensionAttributes": [],
+                "code": "LP190314-7",
+                "codeSystem": "LOINC",
+                "codeSystemVersion": "2.78",
+                "decode": "Unified Parkinson's Disease Rating Scale",
+                "instanceType": "Code"
+              },{
+                "id": "Code_310e",
+                "extensionAttributes": [],
+                "code": "77720-1",
+                "codeSystem": "LOINC",
+                "codeSystemVersion": "2.78",
+                "decode": "Motor examination panel [UPDRS]",
+                "instanceType": "Code"
+              }],
               "instanceType": "AliasCode"
             },
             "notes": [],
@@ -13955,21 +13683,42 @@
                 "id": "ParameterMap_1",
                 "extensionAttributes": [],
                 "tag": "min_age",
-                "reference": "<usdm:ref klass=\"Quantity\" id=\"Quantity_9\" attribute=\"value\"></usdm:ref>",
+                "reference": "<usdm:ref klass=\"Quantity\" id=\"Quantity_09a\" attribute=\"value\"></usdm:ref>",
                 "instanceType": "ParameterMap"
               },
               {
                 "id": "ParameterMap_2",
                 "extensionAttributes": [],
                 "tag": "max_age",
-                "reference": "<usdm:ref klass=\"Quantity\" id=\"Quantity_10\" attribute=\"value\"></usdm:ref>",
+                "reference": "<usdm:ref klass=\"Quantity\" id=\"Quantity_10b\" attribute=\"value\"></usdm:ref>",
                 "instanceType": "ParameterMap"
               },
               {
                 "id": "ParameterMap_3",
                 "extensionAttributes": [],
-                "tag": "StudyPopulation",
-                "reference": "<usdm:ref klass=\"StudyDesignPopulation\" id=\"StudyDesignPopulation_1\" attribute=\"description\"></usdm:ref>",
+                "tag": "StudyIndication",
+                "reference": "<usdm:ref klass=\"Indication\" id=\"Indication_1a\" attribute=\"label\"></usdm:ref>",
+                "instanceType": "ParameterMap"
+              },
+              {
+                "id": "ParameterMap_4",
+                "extensionAttributes": [],
+                "tag": "Pregnant",
+                "reference": "pregnant",
+                "instanceType": "ParameterMap"
+              },
+              {
+                "id": "ParameterMap_5",
+                "extensionAttributes": [],
+                "tag": "BC1_UDPRS",
+                "reference": "<usdm:ref klass=\"AliasCode\" id=\"BiomedicalConcept_11\" attribute=\"label\"></usdm:ref>",
+                "instanceType": "ParameterMap"
+              },
+              {
+                "id": "ParameterMap_6",
+                "extensionAttributes": [],
+                "tag": "BC1_MinValExcl",
+                "reference": "10",
                 "instanceType": "ParameterMap"
               }
             ],
