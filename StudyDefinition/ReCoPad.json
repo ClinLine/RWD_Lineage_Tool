@@ -587,7 +587,15 @@
                 "instanceType": "Code"
               }
             ],
-            "characteristics": [],
+            "characteristics": [{
+                      "id": "Code_011a",
+                      "extensionAttributes": [],
+                      "code": "C98704",
+                      "codeSystem": "http://www.cdisc.org",
+                      "codeSystemVersion": "2024-09-27",
+                      "decode": "Adaptive",
+                      "instanceType": "Code"
+                    }],
             "encounters": [
               {
                 "id": "Encounter_1",
@@ -13811,7 +13819,7 @@
         "type": {
           "id": "Code_621",
           "extensionAttributes": [],
-          "code": "C12345",
+          "code": "C70817",
           "codeSystem": "http://www.cdisc.org",
           "codeSystemVersion": "2024-09-27",
           "decode": "Decode",
