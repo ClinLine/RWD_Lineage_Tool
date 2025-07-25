@@ -1217,8 +1217,8 @@
                 "id": "StudyArm_1",
                 "extensionAttributes": [],
                 "name": "Beroclin",
-                "label": "Beroclin arm",
-                "description": null,
+                "label": "TRT",
+                "description": "Beroclin arm",
                 "type": {
                   "id": "Code_130",
                   "extensionAttributes": [],
