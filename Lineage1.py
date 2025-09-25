@@ -244,7 +244,7 @@ def draw_graph_with_buttons(G, levels, startTxt, mapping_df, variables_df, link_
 
 
     nx.draw_networkx_labels(G, pos, font_size=8, font_color='black', ax=ax)
-    nx.draw_networkx_edges(G, pos, edge_color='gray', arrowstyle='-|>', node_size=2500, node_shape="s", arrowsize=10, connectionstyle="arc3,rad=0.2", ax=ax)
+    nx.draw_networkx_edges(G, pos, edge_color='gray', arrowstyle='-|>', node_size=2000, node_shape="s", arrowsize=10, connectionstyle="arc3,rad=0.2", ax=ax)
        
     ax.set_title("Mapping Concepts and Datasets (Click a mapping node for more details)")
     fig.canvas.mpl_connect('button_press_event', lambda event: on_click(event, G, pos, mapping_df, variables_df, link_df))
@@ -388,7 +388,10 @@ def build_level2_graph(MapConceptVars,MapLinkVars):
             
             # Add edge
             G.add_edge(x, target_var_id)
-
+    
+    for i in range(0, len(MapLinkVars.ds1)): 
+        x=i+1
+        print(MapLinkVars.ds1[x])
     # Add dataset link nodes
     # for _, link_row in link_df.iterrows():
     #     dataset1_id = link_row['dataset1']
