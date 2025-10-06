@@ -168,7 +168,8 @@ def load_ConceptData(conceptName, mapping_df, variables_df, link_df):
                     MyVarArr1.targetDs[x] = variables_df.cell(row=j, column=DsNameCol).value     
 
     x=0
-    for i in range(3,link_df.max_row + 1) : 
+    
+    for i in range(2,link_df.max_row + 1) : 
         if link_df.cell(row=i, column=Ds1Col).value in InputDs and link_df.cell(row=i, column=Ds2Col).value in InputDs:
             x=x+1
             MyLinkArr.ds1[x]=link_df.cell(row=i, column=Ds1Col).value
@@ -178,6 +179,7 @@ def load_ConceptData(conceptName, mapping_df, variables_df, link_df):
             MyLinkArr.joinType[x]=link_df.cell(row=i, column=JoinCol).value            
             MyLinkArr.label[x]=link_df.cell(row=i, column=LabelCol).value
             MyLinkArr.descr[x]=link_df.cell(row=i, column=DescCol).value
+        
 
     return MyVarArr1, MyLinkArr
 
@@ -238,12 +240,12 @@ def draw_graph_with_buttons(G, levels, startTxt, mapping_df, variables_df, link_
     datasets = [node for node in G.nodes if G.nodes[node].get('type') == "Dataset"]
     starts =  [node for node in G.nodes if G.nodes[node].get('type') == "Start"]
 
-    nx.draw_networkx_nodes(G, pos, nodelist=mapping_concepts, node_color='#ffcc99', node_size=2500, node_shape="o", alpha=0.8, ax=ax)  # squares
-    nx.draw_networkx_nodes(G, pos, nodelist=datasets, node_color='lightblue', node_size=2500, node_shape="s", alpha=0.8, ax=ax)  # Squares
+    nx.draw_networkx_nodes(G, pos, nodelist=mapping_concepts, node_color='#2FAC66', node_size=3500, node_shape="o", alpha=0.8, ax=ax)  # squares
+    nx.draw_networkx_nodes(G, pos, nodelist=datasets, node_color='#66B2E4', node_size=3500, node_shape="s", alpha=0.8, ax=ax)  # Squares
     nx.draw_networkx_nodes(G, pos, nodelist=starts, node_color='white', node_size=200, node_shape="s", alpha=0.8, ax=ax)  # Squares
 
 
-    nx.draw_networkx_labels(G, pos, font_size=8, font_color='black', ax=ax)
+    nx.draw_networkx_labels(G, pos, font_size=8, font_color='black', font_weight='bold', ax=ax)
     nx.draw_networkx_edges(G, pos, edge_color='gray', arrowstyle='-|>', node_size=2000, node_shape="s", arrowsize=10, connectionstyle="arc3,rad=0.2", ax=ax)
        
     ax.set_title("Mapping Concepts and Datasets (Click a mapping node for more details)")
@@ -264,7 +266,7 @@ def on_click(event, G, pos, mapping_df, variables_df, link_df):
             node_type = G.nodes[node].get('type', None)
             
             if node_type == "MappingConcept":
-                print(f"Clicked Mapping Concept: {node}")  # Debugging line
+               # print(f"Clicked Mapping Concept: {node}")  # Debugging line
                 MapConceptVars, MapLinkVars = load_ConceptData(node, mapping_df, variables_df, link_df)
                 #run_graph(node)  # Call detailed graph function in link1.py
                 G2, pos, CntRows = build_level2_graph(MapConceptVars,MapLinkVars)
@@ -310,7 +312,7 @@ def build_level2_graph(MapConceptVars,MapLinkVars):
             var_offset[0,1] = var_offset[0,1]+1
     for s in range(1, len(var_offset)):
         var_offset[s,2] = var_offset[s-1,1]+var_offset[s-1,2]
-    print(var_offset)
+    # print(var_offset)
 
     def GetPosVar(sourceDs):
         if sourceDs != None:
@@ -327,7 +329,7 @@ def build_level2_graph(MapConceptVars,MapLinkVars):
         if sourceDs != None:
             for i in range(0,len(DsIn)):
                 if sourceDs==DsIn[i]:
-                    pos=(var_offset[i+1,1]/2)+var_offset[i+1,2]
+                    pos=(var_offset[i+1,1]/4)+var_offset[i+1,2]
         else: 
             pos=var_offset[0,1]/2
         return pos
@@ -389,23 +391,17 @@ def build_level2_graph(MapConceptVars,MapLinkVars):
             # Add edge
             G.add_edge(x, target_var_id)
     
+    # Add dataset link nodes
     for i in range(0, len(MapLinkVars.ds1)): 
         x=i+1
         print(MapLinkVars.ds1[x])
-    # Add dataset link nodes
-    # for _, link_row in link_df.iterrows():
-    #     dataset1_id = link_row['dataset1']
-    #     dataset2_id = link_row['dataset2']
-    #     linkid = link_row['id']
+        print(MapLinkVars.ds2[x])
 
-    #     dataset1_label = parent_name_to_label.get(dataset1_id, str(dataset1_id))
-    #     dataset2_label = parent_name_to_label.get(dataset2_id, str(dataset2_id))
-
-    #     if dataset1_label in dataset_nodes and dataset2_label in dataset_nodes:
-    #         if linkid not in G.nodes:
-    #             G.add_node(linkid, type='link', label=linkid)
-    #         G.add_edge(dataset1_label, linkid)
-    #         G.add_edge(dataset2_label, linkid)
+        G.add_node(MapLinkVars.label[x], type='link', label=MapLinkVars.label[x])
+        G.add_edge(MapLinkVars.ds1[x], MapLinkVars.label[x])
+        G.add_edge(MapLinkVars.ds2[x], MapLinkVars.label[x])
+        pos[MapLinkVars.label[x]]=(x_offset['dataset_source'], -(GetPosInDs(MapLinkVars.ds1[x])+GetPosInDs(MapLinkVars.ds2[x]))/2)
+    #        
     #     print (link_df)
     #     print("Checking link:", dataset1_label, dataset2_label)
     #     print("Available dataset nodes:", dataset_nodes)
@@ -525,20 +521,28 @@ def draw_level2_graph(G, mapping_concept_id, pos, CntRows):
     links = [n for n, d in G.nodes(data=True) if d['type'] == 'link']
 
     #draw_nodes(mapping_concepts, '#ffcc99', 'o', 2500, 0.8)
-    draw_nodes(datasets, 'darkblue', 'o', 4000, 0.8)
+    draw_nodes(datasets, 'black', 'o', 5000, 0)
     draw_nodes(source_variables, 'darkblue', 's', 1000, 0)
     draw_nodes(target_variables, '#0047AB', 'o', 1000, 0)
     draw_nodes(transformations, 'coral', 's', 1800, 0)
-    # draw_nodes(links, 'darkgreen', 'd', 1800, 0.8)
+    draw_nodes(links, 'darkgreen', 'd', 1800, 0)
 
     for node in source_variables + target_variables:
         if node in pos:
             x, y = pos[node]
-            ax.add_patch(patches.Rectangle((x - 0.35, y - 0.3), 0.7, 0.7, linewidth=1, edgecolor='black', facecolor='#5ec2da', alpha=0.8))
+            ax.add_patch(patches.Rectangle((x - 0.35, y - 0.3), 0.7, 0.7, linewidth=1, edgecolor='black', facecolor='#66B2E4', alpha=0.8))
     for node in transformations:
         if node in pos:
             x, y = pos[node]
-            ax.add_patch(patches.Rectangle((x - 0.25, y - 0.3), 0.5, 0.7, linewidth=1, edgecolor='black', facecolor='coral', alpha=0.8))
+            ax.add_patch(patches.Rectangle((x - 0.25, y - 0.3), 0.5, 0.7, linewidth=1, edgecolor='black', facecolor='#2FAC66', alpha=0.8))
+    for node in datasets:
+        if node in pos:
+            x, y = pos[node]
+            ax.add_patch(patches.Rectangle((x - 0.35, y - 0.3), 0.7, 0.7, linewidth=1, edgecolor='black', facecolor="#3B4640", alpha=0.8))
+    for node in links:
+        if node in pos:
+            x, y = pos[node]
+            ax.add_patch(patches.Ellipse((x, y), 0.8, 0.7, linewidth=1, edgecolor='black', facecolor="#5F2FAC", alpha=0.8))
 
     node_labels = {n: G.nodes[n].get('label', str(n)) for n in G.nodes}
     font_color = 'white'
@@ -552,7 +556,7 @@ def draw_level2_graph(G, mapping_concept_id, pos, CntRows):
 
 
 start_txt="Lineage Graph"
-mapping_file = 'LineageExcel/Mapping_MIMIC_DM_v04_lim.xlsx'
+mapping_file = 'LineageExcel/Mapping_MIMIC_DM_v05_lim.xlsx'
 mapping_df, variables_df, datasets_df, link_df = load_data(mapping_file)
 #conceptName="Map DM"
 G, levels = build_main_graph(mapping_df, variables_df, start_txt)
